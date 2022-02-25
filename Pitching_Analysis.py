@@ -55,8 +55,16 @@ pitching['SO9'] = (pitching['SO'] * 9 / pitching['IP']).round(2)
 pitching['BB9'] = (pitching['BB'] * 9 / pitching['IP']).round(2)
 pitching.head()
 
+# Create the Strikeout to Walk ratio by performing the calculation of selecting the `SO` column and dividing by the `BB` column.
+# Use .round(2) to round the results to 2 decimal places.
+# Use .head() to display the first 5 rows of the updated dataset.
+
+pitching['SOtoBB'] = (pitching['SO'] / pitching['BB']).round(2)
+pitching.head()
+
 # Eventually, I plan to show the information in a graph.  For this class, I plan to just show the dataframe.
-# Grouping the yearID, show the average ERA, SO9 and BB9.
+# Grouping the yearID, show the average ERA, SO9 and BB9 and SOtoBB ratio.
+
 
 pitching.groupby('yearID').ERA.mean().round(2)
 
