@@ -67,4 +67,7 @@ pitching.head()
 
 
 pitching.groupby('yearID').ERA.mean().round(2)
+pitching.groupby('yearID').SO9.mean().round(2)
+pitching.groupby('yearID').BB9.mean().round(2)
+pitching.groupby('yearID').SOtoBB.mean().round(2)
 
