@@ -2,13 +2,14 @@
 
 import pandas as pd
 import numpy as np
+import pprint
 # from matplotlib import pyplot as plt
 
 
 # Pitching.csv came from the Kaggle database located at
 # https://www.kaggle.com/open-source-sports/baseball-databank
 
-# 1. Use pd.read_csv('/Pitching.csv') to create a DataFrame called pitching.
+# 1. Use pd.read_csv('data\Pitching.csv') to create a DataFrame called pitching.
 # 2. Use .head() to display the first 5 rows of the dataset.
 
 pitching = pd.read_csv('data\Pitching.csv')
@@ -66,8 +67,12 @@ pitching.head()
 # Grouping the yearID, show the average ERA, SO9 and BB9 and SOtoBB ratio.
 
 
-pitching.groupby('yearID').ERA.mean().round(2)
-pitching.groupby('yearID').SO9.mean().round(2)
-pitching.groupby('yearID').BB9.mean().round(2)
-pitching.groupby('yearID').SOtoBB.mean().round(2)
+df1 = pitching.groupby('yearID').ERA.mean().round(2)
+df2 = pitching.groupby('yearID').SO9.mean().round(2)
+df3 = pitching.groupby('yearID').BB9.mean().round(2)
+df4 = pitching.groupby('yearID').SOtoBB.mean().round(2)
+
+# print(pitching[['yearID','mean_ERA','mean_SO9','mean_BB9','mean_SOtoBB']])
+
+
 
