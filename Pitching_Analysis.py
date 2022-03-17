@@ -2,7 +2,8 @@
 
 import pandas as pd
 import numpy as np
-import pprint
+from sqlalchemy import false
+
 # from matplotlib import pyplot as plt
 
 
@@ -66,13 +67,19 @@ pitching.head()
 # Eventually, I plan to show the information in a graph.  For this class, I plan to just show the dataframe.
 # Grouping the yearID, show the average ERA, SO9 and BB9 and SOtoBB ratio.
 
+# Created an empty dataframe called pitching_averages to create columns
 
-df1 = pitching.groupby('yearID').ERA.mean().round(2)
-df2 = pitching.groupby('yearID').SO9.mean().round(2)
-df3 = pitching.groupby('yearID').BB9.mean().round(2)
-df4 = pitching.groupby('yearID').SOtoBB.mean().round(2)
+column_names = ["avg_era", "avg_SO9", "avg_BB9", "avg_SOtoBB"]
 
-# print(pitching[['yearID','mean_ERA','mean_SO9','mean_BB9','mean_SOtoBB']])
+pitching_averages = pd.DataFrame(columns = column_names)
 
 
+
+pitching_averages = pitching_averages.append(pitching.groupby(['yearID'], as_index = False).agg(avg_era = ('ERA', 'mean'), avg_SO9 = ('SO9', 'mean'), \
+
+avg_BB9 = ('BB9', 'mean'), avg_SOtoBB = ('SOtoBB', 'mean')))
+
+pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "YearID":0})
+
+print(pitching_averages)
 
