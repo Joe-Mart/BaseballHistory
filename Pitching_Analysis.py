@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from sqlalchemy import false
+import math
 
 # from matplotlib import pyplot as plt
 
@@ -79,7 +80,15 @@ pitching_averages = pitching_averages.append(pitching.groupby(['yearID'], as_ind
 
 avg_BB9 = ('BB9', 'mean'), avg_SOtoBB = ('SOtoBB', 'mean')))
 
-pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "YearID":0})
+# Round the averages to two decimal places.
+
+pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2})
+
+# pitching_averages['yearID']=int(float(pitching_averages['yearID']))
+
+
+# Reorder the columns in the dataframe to have the YearID column first.
+
+pitching_averages = pitching_averages[['yearID', 'avg_era', 'avg_SO9', 'avg_BB9', 'avg_SOtoBB']]
 
 print(pitching_averages)
-
