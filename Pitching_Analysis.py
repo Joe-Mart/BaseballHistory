@@ -26,6 +26,8 @@ pitching.head()
 # Update the dataset to include only rows from 1965 to 1972, had a minumu of 20 starts
 # each season, and have no relief appearances,  In addition, keep only the first 20 columns.
 
+pitching['yearID'] = pitching['yearID'].astype(float)
+
 pitching = pitching[(pitching['yearID'] >= 1965) & (pitching['yearID'] <= 1972) & (pitching['GS'] >= 20) & (pitching['G'] == pitching['GS'])].iloc[:, :20]
 pitching = pitching.drop(['stint', 'W', 'L', 'CG', 'SHO', 'SV'], axis=1)
 pitching.head()
@@ -74,15 +76,13 @@ column_names = ["avg_era", "avg_SO9", "avg_BB9", "avg_SOtoBB"]
 
 pitching_averages = pd.DataFrame(columns = column_names)
 
-
-
 pitching_averages = pitching_averages.append(pitching.groupby(['yearID'], as_index = False).agg(avg_era = ('ERA', 'mean'), avg_SO9 = ('SO9', 'mean'), \
 
 avg_BB9 = ('BB9', 'mean'), avg_SOtoBB = ('SOtoBB', 'mean')))
 
 # Round the averages to two decimal places.
 
-pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2})
+pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
 
 # pitching_averages['yearID']=int(float(pitching_averages['yearID']))
 
@@ -90,5 +90,7 @@ pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9"
 # Reorder the columns in the dataframe to have the YearID column first.
 
 pitching_averages = pitching_averages[['yearID', 'avg_era', 'avg_SO9', 'avg_BB9', 'avg_SOtoBB']]
+
+pitching_averages['yearID'] = pitching_averages['yearID'].astype(int)
 
 print(pitching_averages)
