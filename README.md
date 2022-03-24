@@ -18,6 +18,8 @@ To install prerequisites:
   - >pip install pandas
   - >pip install numpy 
   - >pip install logging
+  - >from sqlalchemy import false
+  - >import math
 
 
 To run the program:
@@ -25,6 +27,7 @@ To run the program:
   - >cd BaseballHistory
   - >python Pitching_Analysis.py
 
+If you have a virtual environment, you can run that.  If you want, you can access Ipython and run each line.
 
 # Code Louisville Requirements
 
