@@ -43,10 +43,10 @@ def main():
     #  did have an impact on pitching ERA.
 
     # The first set up is to create a column that computes the number of innings pitched.  The data has a field called IPouts which
-    # shows the total outs pitched by pitcher.  So, simply, take this number and divide by 3 to get the innings.  Round the decimal to two digits.
+    # shows the total outs pitched by pitcher.  So, simply, take this number and divide by 3 to get the innings.  
     # Once the column is created, there is no need for the IPouts column, so that will be deleted.
 
-    pitching['IP'] = ((pitching['IPouts'])/3).round(2)
+    pitching['IP'] = ((pitching['IPouts'])/3)
     del pitching['IPouts']
     # pitching.head()
 
@@ -54,15 +54,15 @@ def main():
     # These two columns will be showing to see if lowering impacted the strikeouts per nine and walks per nine innings.
 
     # For the strikeouts per nine, perform the calculation of selecting the `SO` column, multiplying it by 9, and dividing by the `IP` column.
-    # Use .round(2) to round the results to 2 decimal places.
+    
 
-    pitching['SO9'] = (pitching['SO'] * 9 / pitching['IP']).round(2)
+    pitching['SO9'] = (pitching['SO'] * 9 / pitching['IP'])
 
     # For the walks per nine inning, perform the calculation of selecting the `BB` column,  multiplying it by 9, and then dividing by the `IP` column.
-    # Use .round(2) to round the results to 2 decimal places.
-    # Use .head() to display the first 5 rows of the updated dataset.
+    
+    # Use .head() to display the first 5 rows of the updated dataset if you are doing this one command at a time.
 
-    pitching['BB9'] = (pitching['BB'] * 9 / pitching['IP']).round(2)
+    pitching['BB9'] = (pitching['BB'] * 9 / pitching['IP'])
     # pitching.head()
 
     # Create the Strikeout to Walk ratio by performing the calculation of selecting the `SO` column and dividing by the `BB` column.
@@ -72,7 +72,7 @@ def main():
     pitching['SOtoBB'] = (pitching['SO'] / pitching['BB']).round(2)
     # pitching.head()
 
-    # Eventually, I plan to show the information in a graph.  For this class, I plan to just show the dataframe.
+    # For this class, I plan to just show the dataframe.
     # Grouping the yearID, show the average ERA, SO9 and BB9 and SOtoBB ratio.
 
     # Created an empty dataframe called pitching_averages to create columns
