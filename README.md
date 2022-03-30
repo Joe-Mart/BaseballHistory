@@ -10,25 +10,24 @@ The purpose of this analysis is to see if there is an actual change in the pitch
 
 # INSTRUCTIONS 
 
-CODE LOUISVILLE project requirements are called out in the code, just search for "Code Louisville" in the py files.
+This program was built using Python version 3.10.1 and pip version 21.3.1, in which both are required.
 
-This program was built using Python version 3.10.1 and pip version 21.3.1, with the following installed packages:
+The following packages need to be installed:
+
+A separate virtual environment is highly recommended.
 
 To install prerequisites:
   - >pip install pandas
   - >pip install numpy 
   - >pip install logging
-  - >from sqlalchemy import false
-  - >import math
-
+  
 
 To run the program:
   - >git clone https://github.com/Joe-Mart/BaseballHistory.git
   - >cd BaseballHistory
   - >python Pitching_Analysis.py
 
-If you have a virtual environment, you can run that.  If you want, you can access Ipython and run each line.
-
+ 
 # Code Louisville Requirements
 
 Category 1: Python Programming Basics:
