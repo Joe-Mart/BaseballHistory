@@ -97,7 +97,7 @@ def main():
 
     # Round the averages to two decimal places.
 
-    # pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
+    pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
 
     # For some reason, the above code does not work.  For the purposes of the class, I will leave this out
     # for later.
