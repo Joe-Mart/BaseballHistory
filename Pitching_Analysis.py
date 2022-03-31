@@ -5,6 +5,8 @@ import numpy as np
 # from sqlalchemy import false
 import math
 import logging
+import os
+import platform
 
 def main():
 
@@ -18,7 +20,13 @@ def main():
     # 1. Use pd.read_csv('data\Pitching.csv') to create a DataFrame called pitching.
     # 2. Use .head() to display the first 5 rows of the dataset.
 
-    pitching = pd.read_csv('data\Pitching.csv')
+    filepath = os.getcwd() 
+    if platform.system() == "Windows":
+        filepath += "\\"
+    else:
+        filepath += "/"
+    filepath += "Pitching.csv"
+    pitching = pd.read_csv(filepath)
     # pitching.head()
 
     # Since the data contains entries from 1871 to 2015, need to narrow the size of the
@@ -89,8 +97,11 @@ def main():
 
     # Round the averages to two decimal places.
 
-    pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
+    # pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
 
+    # For some reason, the above code does not work.  For the purposes of the class, I will leave this out
+    # for later.
+    
     # Convert the yearID field to integer.
 
     pitching_averages['yearID'] = pitching_averages['yearID'].astype(int)

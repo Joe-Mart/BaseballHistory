@@ -18,9 +18,8 @@ A separate virtual environment is highly recommended.
 
 To install prerequisites:
   - >pip install pandas
-  - >pip install numpy 
-  - >pip install logging
   
+The requirements.txt file contains the items installed in a virtual environment.
 
 To run the program:
   - >git clone https://github.com/Joe-Mart/BaseballHistory.git
