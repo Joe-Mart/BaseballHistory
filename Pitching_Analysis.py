@@ -1,9 +1,10 @@
 # Pitching project for Code Louisville Python Class 1.
 
+
 import pandas as pd
 import numpy as np
 # from sqlalchemy import false
-import math
+# import math
 import logging
 import os
 import platform
@@ -43,7 +44,7 @@ def main():
 
     pitching = pitching[(pitching['yearID'] >= 1965) & (pitching['yearID'] <= 1972) & (pitching['GS'] >= 20) & (pitching['G'] == pitching['GS'])].iloc[:, :20]
     pitching = pitching.drop(['stint', 'W', 'L', 'CG', 'SHO', 'SV'], axis=1)
-    # pitching.head()
+    #pitching.head()
 
     # The pitching sample script on Kaggle has calculation for other pitching metrics.  I decided to include some of those metrics for 
     # possible future use.
@@ -54,7 +55,7 @@ def main():
     # shows the total outs pitched by pitcher.  So, simply, take this number and divide by 3 to get the innings.  
     # Once the column is created, there is no need for the IPouts column, so that will be deleted.
 
-    pitching['IP'] = ((pitching['IPouts'])/3)
+    pitching['IP'] = ((pitching['IPouts'])/3).round(2)
     del pitching['IPouts']
     # pitching.head()
 
@@ -64,13 +65,13 @@ def main():
     # For the strikeouts per nine, perform the calculation of selecting the `SO` column, multiplying it by 9, and dividing by the `IP` column.
     
 
-    pitching['SO9'] = (pitching['SO'] * 9 / pitching['IP'])
+    pitching['SO9'] = (pitching['SO'] * 9 / pitching['IP']).round(2)
 
     # For the walks per nine inning, perform the calculation of selecting the `BB` column,  multiplying it by 9, and then dividing by the `IP` column.
     
     # Use .head() to display the first 5 rows of the updated dataset if you are doing this one command at a time.
 
-    pitching['BB9'] = (pitching['BB'] * 9 / pitching['IP'])
+    pitching['BB9'] = (pitching['BB'] * 9 / pitching['IP']).round(2)
     # pitching.head()
 
     # Create the Strikeout to Walk ratio by performing the calculation of selecting the `SO` column and dividing by the `BB` column.
@@ -97,7 +98,7 @@ def main():
 
     # Round the averages to two decimal places.
 
-    pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
+    # pitching_averages = pitching_averages.round({"avg_era":2, "avg_SO9":2, "avg_BB9":2, "avg_SOtoBB":2, "yearID":0})
 
     # For some reason, the above code does not work.  For the purposes of the class, I will leave this out
     # for later.
@@ -105,7 +106,6 @@ def main():
     # Convert the yearID field to integer.
 
     pitching_averages['yearID'] = pitching_averages['yearID'].astype(int)
-
 
     # Reorder the columns in the dataframe to have the YearID column first.
 
